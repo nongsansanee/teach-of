@@ -28,7 +28,9 @@ Route::post('/nong-post',function(){
     return view('nong');
 });
 
-Route::get('/show-book',[BookController::class,'index']);
+Route::get('/ui-store-book',[BookController::class,'index']);
 Route::post('/store-book',[BookController::class,'store']);
+Route::get('/show-books',[BookController::class,'showAll']);
+Route::get('/show-book/{id}',[BookController::class,'show']);
 
 Route::post('/login',[BookController::class,'checkUser']);

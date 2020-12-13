@@ -62,7 +62,23 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        //$a = book::find($id)->get();
+        $a = book::where('id', $id)->get();
+        //\Log::info($a);
+        
+
+        //return view(show_book)->with('bookDetails',$a);
+        return view('show_books', ['bookDetails' => $a]);
+    }
+
+    public function showAll()
+    {
+
+        $a = book::all();
+        //\Log::info($a);
+        return view('show_books', ['bookDetails' => $a]);
+
     }
 
     /**
