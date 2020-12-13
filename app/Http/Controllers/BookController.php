@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\book;
+
 class BookController extends Controller
 {
     public function checkUser(Request $request)
@@ -20,7 +22,7 @@ class BookController extends Controller
     public function index()
     {
         // return "show book";
-        return view('nong');
+        return view('store_book');
     }
 
     /**
@@ -41,7 +43,15 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        return 'IN function store';
+       \Log::info("store book");
+        $aaa = new book;
+
+        $aaa->book_name = $request->input('book_name');
+        $aaa->price = $request->input('price');
+
+        $aaa->save();
+
+         return 'save success';
     }
 
     /**
