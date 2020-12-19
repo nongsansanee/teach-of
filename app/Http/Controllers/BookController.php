@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\book;
+use App\Models\catagory;
 
 class BookController extends Controller
 {
@@ -48,6 +49,7 @@ class BookController extends Controller
 
         $aaa->book_name = $request->input('book_name');
         $aaa->price = $request->input('price');
+        $aaa->catagory_id = "2";
 
         $aaa->save();
 
@@ -71,6 +73,19 @@ class BookController extends Controller
         //return view(show_book)->with('bookDetails',$a);
         return view('show_books', ['bookDetails' => $a]);
     }
+
+    public function show_books_by_catagory($id)
+    {
+        
+        $a = catagory::find($id)->book()->get();
+        //$a = catagory::where('id', $id)->book()->get();
+        //\Log::info($a);
+        
+
+        //return view(show_book)->with('bookDetails',$a);
+        return view('show_books_by_catagory', ['bookDetails' => $a]);
+    }
+    
 
     public function showAll()
     {

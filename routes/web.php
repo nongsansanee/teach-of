@@ -33,4 +33,6 @@ Route::post('/store-book',[BookController::class,'store']);
 Route::get('/show-books',[BookController::class,'showAll']);
 Route::get('/show-book/{id}',[BookController::class,'show']);
 
+Route::get('/show-book-catagory/{id}',[BookController::class,'show_books_by_catagory']);
+
 Route::post('/login',[BookController::class,'checkUser']);
